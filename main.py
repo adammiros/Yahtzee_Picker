@@ -133,6 +133,7 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
     if dice6 == 6:
         SixesCount.append("Dice_6")
 
+    #Calculate the values of each type of dice rolled all toghether
     OnesValue = 1 * len(OnesCount)
     TwosValue = 2 * len(TwosCount)
     ThreesValue = 3 * len(ThreesCount)
@@ -140,7 +141,24 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
     FivesValue = 5 * len(FivesCount)
     SixesValue = 6 * len(SixesCount)
 
+
+    TotalCombinedValue = OnesValue + TwosValue + ThreesValue + FoursValue + FivesValue + SixesValue
+
+    EligibleFor35Bonus = False
+
+    if TotalCombinedValue > 63:
+        EligibleFor35Bonus = True
+        TotalCombinedValue += 35
+
+
+
     print("Current State Of Lists: \n")
+    print("35 Point Bonus?: " + str(EligibleFor35Bonus))
+    print("Total Value Of All Rolled Dice (Upper): " + str(TotalCombinedValue) + "\n")
+    print("-------")
+    print("3 Of A Kind?: " )
+    print("4 Of A Kind?: ")
+    print("Full House?: ")
     print("Ones: " + str(OnesCount) + " -- Length: " + str(len(OnesCount)) + " -- Final Value: " + str(OnesValue))
     print("Twos: " + str(TwosCount) + " -- Length: " + str(len(TwosCount)) + " -- Final Value: " + str(TwosValue))
     print("Threes: " + str(ThreesCount) + " -- Length: " + str(len(ThreesCount)) + " -- Final Value: " + str(ThreesValue))
