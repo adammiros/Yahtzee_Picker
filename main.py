@@ -17,7 +17,10 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
     FivesValue = 0
     SixesValue = 0
 
+    EligibleFor35Bonus = False
 
+    ThreeOfAKindPresent = False
+    FourOfAKindPresent = False
 
     # Checking The First Dices Value
     if dice1 == 1:
@@ -141,14 +144,58 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
     FivesValue = 5 * len(FivesCount)
     SixesValue = 6 * len(SixesCount)
 
-
+    #Calculating final score of the upper section
     TotalCombinedValue = OnesValue + TwosValue + ThreesValue + FoursValue + FivesValue + SixesValue
 
-    EligibleFor35Bonus = False
 
+    #Checking for 35 point bonus
     if TotalCombinedValue > 63:
         EligibleFor35Bonus = True
         TotalCombinedValue += 35
+
+    #Checking for three of a kind
+    if len(OnesCount) == 3:
+        ThreeOfAKindPresent = True
+
+    if len(TwosCount) == 3:
+        ThreeOfAKindPresent = True
+
+    if len(ThreesCount) == 3:
+        ThreeOfAKindPresent = True
+
+    if len(FoursCount) == 3:
+        ThreeOfAKindPresent = True
+
+    if len(FivesCount) == 3:
+        ThreeOfAKindPresent = True
+
+    if len(SixesCount) == 3:
+        ThreeOfAKindPresent = True
+
+    # Checking for four of a kind
+    if len(OnesCount) == 4:
+        FourOfAKindPresent = True
+
+    if len(TwosCount) == 4:
+        FourOfAKindPresent = True
+
+    if len(ThreesCount) == 4:
+        FourOfAKindPresent = True
+
+    if len(FoursCount) == 4:
+        FourOfAKindPresent = True
+
+    if len(FivesCount) == 4:
+        FourOfAKindPresent = True
+
+    if len(SixesCount) == 4:
+        FourOfAKindPresent = True
+
+
+
+
+
+
 
 
 
@@ -156,8 +203,8 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
     print("35 Point Bonus?: " + str(EligibleFor35Bonus))
     print("Total Value Of All Rolled Dice (Upper): " + str(TotalCombinedValue) + "\n")
     print("-------")
-    print("3 Of A Kind?: " )
-    print("4 Of A Kind?: ")
+    print("3 Of A Kind?: " + str(ThreeOfAKindPresent))
+    print("4 Of A Kind?: " + str(FourOfAKindPresent))
     print("Full House?: ")
     print("Ones: " + str(OnesCount) + " -- Length: " + str(len(OnesCount)) + " -- Final Value: " + str(OnesValue))
     print("Twos: " + str(TwosCount) + " -- Length: " + str(len(TwosCount)) + " -- Final Value: " + str(TwosValue))
@@ -170,6 +217,6 @@ def determineBestToKeep(dice1, dice2, dice3, dice4, dice5, dice6):
 
 
 #Calling main function
-determineBestToKeep(1,1,3,4,5,6)
+determineBestToKeep(0,3,3,3,2,4)
 
 
